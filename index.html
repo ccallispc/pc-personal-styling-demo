@@ -201,11 +201,12 @@
         }
 
         .page-title {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: -0.02em;
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
             margin-bottom: 2rem;
-            color: var(--gray-900);
+            color: #4a4a4a;
         }
 
         /* ========== STYLING TABS ========== */
@@ -634,7 +635,7 @@
             opacity: 1;
         }
 
-        /* Flat Lay Preview */
+        /* Flat Lay Preview - Outfit Narrative Artful Layout */
         .flatlay-container {
             display: grid;
             grid-template-columns: 1fr 280px;
@@ -642,34 +643,44 @@
         }
 
         .flatlay-canvas {
-            background: var(--gray-50);
+            background: #f5f5f5;
             border: 1px solid var(--gray-200);
             border-radius: 6px;
-            aspect-ratio: 4/3;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            padding: 1rem;
-        }
-
-        .flatlay-slot {
-            background: var(--white);
-            border-radius: 4px;
+            aspect-ratio: 1/1;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 1rem;
+            position: relative;
         }
 
-        .flatlay-slot img {
-            width: 100%;
-            height: 100%;
+        .flatlay-item {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flatlay-item img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            padding: 0.5rem;
+        }
+
+        .flatlay-label {
+            font-size: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+            text-align: center;
+            max-width: 100px;
+            line-height: 1.3;
         }
 
         .flatlay-slot.empty {
             border: 1px dashed var(--gray-300);
+            background: rgba(255,255,255,0.5);
+            border-radius: 4px;
         }
 
         .selected-summary {
@@ -1029,20 +1040,29 @@
         }
 
         .look-detail-flatlay {
-            aspect-ratio: 4/3;
-            background: var(--white);
+            aspect-ratio: 1/1;
+            background: #f5f5f5;
             border-radius: 4px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.375rem;
+            overflow: hidden;
             padding: 0.5rem;
+            position: relative;
         }
 
-        .look-detail-flatlay img {
-            width: 100%;
-            height: 100%;
+        .look-detail-flatlay .flatlay-item {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .look-detail-flatlay .flatlay-item img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 3px;
+        }
+
+        .look-detail-flatlay .flatlay-label {
+            font-size: 0.4rem;
         }
 
         .look-detail-ai {
@@ -1594,55 +1614,55 @@
     <div class="toast" id="toast">Request sent to Alexandra Chen</div>
 
     <script>
-        // Closet Items Data
+        // Closet Items Data - Using thumbnail (flat product) images
         const closetItems = [
             {
                 id: 1,
                 category: 'shirts',
-                name: 'Stanton 120s Light Blue Bengal Stripe',
-                fit: 'Slim fit, pointed collar',
-                details: '120s two-ply cotton. Light blue bengal stripe pattern.',
-                image: 'https://cdn2.propercloth.com/pic_cs/9b47e75c83f51502ae90f4be549e7847_size6.jpg'
+                name: 'Clark Light Blue Oxford Cloth',
+                fit: 'Slim fit, button-down collar',
+                details: 'Classic oxford cloth. Light blue solid.',
+                image: 'https://cdn2.propercloth.com/pic_cs/343259_6fc065b32ad00deb71f6abf97db07221_size6.jpg'
             },
             {
                 id: 2,
                 category: 'jackets',
-                name: 'Loro Piana Navy S150s Hopsack Hudson Jacket',
+                name: 'Navy Hopsack Hudson Jacket',
                 fit: 'Contemporary fit, soft shoulder',
-                details: 'Loro Piana S150s wool hopsack. Navy blue with natural texture.',
-                image: 'https://cdn2.propercloth.com/pic_tccp/bc0316910ae441dd1f3dac6e5e6e0ee2_size6.jpg'
+                details: 'Loro Piana S150s wool hopsack. Navy blue.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/105398_9f091673ef3169329567e4150e2ca0f5_size6.jpg'
             },
             {
                 id: 3,
                 category: 'trousers',
-                name: 'Grey Non-Iron Stretch Chino',
+                name: 'Charcoal Stretch Wool Dress Pant',
                 fit: 'Tailored fit, mid-rise',
-                details: 'Non-iron stretch cotton twill. Grey with slight sheen.',
-                image: 'https://cdn2.propercloth.com/pic_tccp/1047c3bb7879774d07bd723bac67109c_size6.jpg'
+                details: 'Stretch wool blend. Charcoal grey.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/119257_7f697717d30ad452f6fa6abea82f3ae4_size6.jpg'
             },
             {
                 id: 4,
                 category: 'knitwear',
-                name: 'Grey Cashmere Full Zip',
+                name: 'Grey Cashmere Full-Zip Sweater',
                 fit: 'Regular fit, full zip',
-                details: '100% cashmere. Heather grey.',
-                image: 'https://cdn2.propercloth.com/pic_sp/2137d2e50cae8e30dea46b70add82c15_size6.jpg'
+                details: 'Scottish cashmere. Heather grey.',
+                image: 'https://cdn2.propercloth.com/pic_sp/2353_91647c4c1c2a25bbeb6d355797994d46_size6.jpg'
             },
             {
                 id: 5,
                 category: 'shirts',
-                name: 'Weston 80s Slate Pinpoint',
+                name: 'White Stretch Non-Iron Shirt',
                 fit: 'Classic fit, spread collar',
-                details: '80s two-ply pinpoint oxford. Slate grey solid.',
-                image: 'https://cdn2.propercloth.com/pic_cs/bf39f9c930cef51f7af7594218bc4b9f_size6.jpg'
+                details: 'Stretch non-iron cotton. Crisp white.',
+                image: 'https://cdn2.propercloth.com/pic_cs/261190_06e79a86e9f18b04dc6487607389cfc0_size6.jpg'
             },
             {
                 id: 6,
                 category: 'trousers',
-                name: 'Japanese 12oz Mid Wash Indigo Stretch Jeans',
+                name: 'Navy Stretch Cotton Chino',
                 fit: 'Slim fit, mid-rise',
-                details: 'Japanese 12oz stretch denim. Mid wash indigo.',
-                image: 'https://cdn2.propercloth.com/pic_tccp/b5f89e754795179fc6b42522dac8a4d7_size6.jpg'
+                details: 'Stretch cotton twill. Navy blue.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/167428_34fcfaf6a0c9456ba120e6de5ab91cc3_size6.jpg'
             }
         ];
 
@@ -1825,12 +1845,21 @@
                 notesContainer.innerHTML = `<div class="look-detail-text empty">Awaiting notes from your stylist...</div>`;
             }
 
-            // Flat lay
+            // Flat lay - Grid layout with subtle artful touches - NO OVERLAP
             const flatlay = document.getElementById('lookDetailFlatlay');
-            const emptySlots = Math.max(0, 6 - lookItems.length);
-            flatlay.innerHTML = lookItems.map(item => `
-                <img src="${item.image}" alt="${item.name}">
-            `).join('') + Array(emptySlots).fill('<div style="background: var(--gray-100); border-radius: 3px;"></div>').join('');
+            const artfulPositions = [
+                { top: '2%', left: '2%', width: '30%', transform: 'rotate(-1deg)' },
+                { top: '3%', left: '35%', width: '30%', transform: 'rotate(0.5deg)' },
+                { top: '2%', right: '2%', width: '30%', transform: 'rotate(1deg)' },
+                { bottom: '2%', left: '2%', width: '30%', transform: 'rotate(0.5deg)' },
+                { bottom: '3%', left: '35%', width: '30%', transform: 'rotate(-0.5deg)' },
+                { bottom: '2%', right: '2%', width: '30%', transform: 'rotate(-1deg)' }
+            ];
+            flatlay.innerHTML = lookItems.map((item, index) => {
+                const pos = artfulPositions[index % artfulPositions.length];
+                const style = Object.entries(pos).map(([k, v]) => `${k}: ${v}`).join('; ');
+                return `<div class="flatlay-item" style="${style}"><img src="${item.image}" alt="${item.name}"><div class="flatlay-label">${item.name.split(' ').slice(0, 3).join(' ')}</div></div>`;
+            }).join('');
 
             // AI image
             const aiSection = document.getElementById('lookDetailAI');
@@ -1969,12 +1998,30 @@
             const selectedList = document.getElementById('creatorSelectedList');
             const selectedItems = creatorState.selectedItems.map(id => closetItems.find(i => i.id === id)).filter(Boolean);
 
-            const emptySlots = Math.max(0, 6 - selectedItems.length);
-            canvas.innerHTML = selectedItems.map(item => `
-                <div class="flatlay-slot">
-                    <img src="${item.image}" alt="${item.name}">
-                </div>
-            `).join('') + Array(emptySlots).fill('<div class="flatlay-slot empty"></div>').join('');
+            // Grid-based positions with subtle artful touches - NO OVERLAP
+            // 3 columns x 2 rows layout
+            const artfulPositions = [
+                { top: '2%', left: '2%', width: '30%', transform: 'rotate(-1deg)' },      // Row 1, Col 1
+                { top: '3%', left: '35%', width: '30%', transform: 'rotate(0.5deg)' },    // Row 1, Col 2
+                { top: '2%', right: '2%', width: '30%', transform: 'rotate(1deg)' },      // Row 1, Col 3
+                { bottom: '2%', left: '2%', width: '30%', transform: 'rotate(0.5deg)' },  // Row 2, Col 1
+                { bottom: '3%', left: '35%', width: '30%', transform: 'rotate(-0.5deg)' },// Row 2, Col 2
+                { bottom: '2%', right: '2%', width: '30%', transform: 'rotate(-1deg)' }   // Row 2, Col 3
+            ];
+
+            // Generate artful flat lay with positioned items
+            const flatLayHTML = selectedItems.map((item, index) => {
+                const pos = artfulPositions[index % artfulPositions.length];
+                const style = Object.entries(pos).map(([k, v]) => `${k}: ${v}`).join('; ');
+                return `
+                    <div class="flatlay-item" style="${style}">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="flatlay-label">${item.name.split(' ').slice(0, 3).join(' ')}</div>
+                    </div>
+                `;
+            }).join('');
+
+            canvas.innerHTML = flatLayHTML || '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--gray-400);">Select items to build your look</div>';
 
             selectedList.innerHTML = selectedItems.map(item => `
                 <div class="summary-item">
