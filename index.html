@@ -1,12 +1,2164 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0239)file:///Users/chriscallis/Library/Application%20Support/Claude/local-agent-mode-sessions/59178ee0-bd70-4316-add8-d59084d159ed/8ab07add-59e3-4d45-b635-935704b4f9a7/local_c49f7b28-f6c0-4a48-a169-b846a76963df/outputs/proper-cloth-stylist.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Styling - Proper Cloth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./Personal Styling - Proper Cloth_files/css2" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pc-black: #000000;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--white);
+            color: var(--gray-900);
+            line-height: 1.5;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== HEADER - Matching Proper Cloth ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--pc-black);
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .header-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-icon {
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-icon:hover {
+            opacity: 0.8;
+        }
+
+        .header-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            font-size: 0.8125rem;
+            cursor: pointer;
+        }
+
+        /* ========== ACCOUNT LAYOUT ========== */
+        .account-container {
+            margin-top: 56px;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: calc(100vh - 56px);
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            border-right: 1px solid var(--gray-200);
+            padding: 2.5rem 2rem;
+            background: var(--white);
+        }
+
+        .sidebar-title {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.125rem;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--gray-900);
+        }
+
+        .sidebar-link.active {
+            color: var(--gray-900);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .sidebar-link.active::before {
+            content: '•';
+            position: absolute;
+            left: -1rem;
+            color: var(--gray-900);
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 1.25rem 0;
+        }
+
+        /* Personal Styling highlight */
+        .sidebar-link.styling-link {
+            color: var(--gray-900);
+            font-weight: 500;
+        }
+
+        .sidebar-link.styling-link.active {
+            color: var(--gray-900);
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            padding: 2.5rem 3rem;
+            background: var(--white);
+            max-width: 1100px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: var(--gray-900);
+        }
+
+        /* ========== STYLING TABS ========== */
+        .styling-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: 2rem;
+        }
+
+        .styling-tab {
+            padding: 0.875rem 1.25rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            font-family: inherit;
+        }
+
+        .styling-tab:hover {
+            color: var(--gray-700);
+        }
+
+        .styling-tab.active {
+            color: var(--gray-900);
+            border-bottom-color: var(--gray-900);
+        }
+
+        /* ========== PAGES ========== */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ========== CLOSET STYLES ========== */
+        .closet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .closet-filters {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--gray-100);
+            padding: 0.25rem;
+            border-radius: 6px;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            border-radius: 4px;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--white);
+            color: var(--gray-900);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .add-btn {
+            padding: 0.625rem 1.25rem;
+            background: var(--pc-black);
+            color: var(--white);
+            border: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .add-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Closet Grid */
+        .closet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .closet-item {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .closet-item:hover {
+            border-color: var(--gray-300);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .item-image {
+            aspect-ratio: 4/5;
+            background: var(--gray-50);
+            overflow: hidden;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .closet-item:hover .item-image img {
+            transform: scale(1.02);
+        }
+
+        .item-info {
+            padding: 0.875rem;
+        }
+
+        .item-category {
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+
+        .item-name {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            margin-bottom: 0.125rem;
+            line-height: 1.4;
+        }
+
+        .item-fit {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* ========== LOOKS PAGE ========== */
+        .looks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .looks-filters {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--gray-100);
+            padding: 0.25rem;
+            border-radius: 6px;
+        }
+
+        .saved-looks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .look-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .look-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .look-preview {
+            aspect-ratio: 4/3;
+            background: var(--gray-50);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .look-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+
+        .look-preview .empty-slot {
+            background: var(--gray-100);
+            border-radius: 3px;
+        }
+
+        .look-info {
+            padding: 0.875rem;
+        }
+
+        .look-name {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .look-meta {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .look-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.625rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+
+        .look-badge.ai {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--gray-900);
+        }
+
+        /* ========== LOOK CREATOR ========== */
+        .look-creator {
+            display: none;
+        }
+
+        .look-creator.active {
+            display: block;
+        }
+
+        .creator-steps {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .creator-step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray-400);
+            background: var(--gray-100);
+            border-radius: 20px;
+        }
+
+        .creator-step.active {
+            background: var(--pc-black);
+            color: var(--white);
+        }
+
+        .creator-step.completed {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        .creator-step-num {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.625rem;
+        }
+
+        .creator-content {
+            display: none;
+        }
+
+        .creator-content.active {
+            display: block;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.875rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--white);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--gray-900);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Item Selector Grid */
+        .item-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .selectable-item {
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .selectable-item:hover {
+            border-color: var(--gray-300);
+        }
+
+        .selectable-item.selected {
+            border-color: var(--pc-black);
+        }
+
+        .selectable-item .item-image {
+            aspect-ratio: 4/5;
+        }
+
+        .selectable-item .item-info {
+            padding: 0.625rem;
+        }
+
+        .selectable-item .item-name {
+            font-size: 0.75rem;
+        }
+
+        .item-check {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .selectable-item.selected .item-check {
+            background: var(--pc-black);
+            border-color: var(--pc-black);
+        }
+
+        .item-check svg {
+            width: 12px;
+            height: 12px;
+            stroke: white;
+            opacity: 0;
+        }
+
+        .selectable-item.selected .item-check svg {
+            opacity: 1;
+        }
+
+        /* Flat Lay Preview */
+        .flatlay-container {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 1.5rem;
+        }
+
+        .flatlay-canvas {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            aspect-ratio: 4/3;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            padding: 1rem;
+        }
+
+        .flatlay-slot {
+            background: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flatlay-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+        }
+
+        .flatlay-slot.empty {
+            border: 1px dashed var(--gray-300);
+        }
+
+        .selected-summary {
+            background: var(--gray-50);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .selected-summary h4 {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+        }
+
+        .summary-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+        }
+
+        .summary-item {
+            display: flex;
+            gap: 0.625rem;
+            align-items: center;
+        }
+
+        .summary-thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 3px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .summary-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .summary-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* AI Try-On */
+        .tryon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .photo-slot {
+            aspect-ratio: 3/4;
+            background: var(--gray-50);
+            border: 2px dashed var(--gray-300);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .photo-slot:hover {
+            border-color: var(--gray-400);
+        }
+
+        .photo-slot.filled {
+            border-style: solid;
+            border-color: var(--gray-300);
+        }
+
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .tryon-result {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .tryon-placeholder {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .tryon-placeholder h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tryon-placeholder p {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        /* Creator Navigation */
+        .creator-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .btn-secondary {
+            padding: 0.75rem 1.25rem;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-400);
+        }
+
+        .btn-primary {
+            padding: 0.75rem 1.25rem;
+            background: var(--pc-black);
+            color: var(--white);
+            border: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 4px;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+
+        /* ========== REQUEST LOOK PAGE ========== */
+        .request-form {
+            max-width: 500px;
+        }
+
+        .advisor-card {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            margin-bottom: 1.5rem;
+            align-items: center;
+            border-radius: 6px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .advisor-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--pc-black);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .advisor-info h4 {
+            font-size: 0.9375rem;
+            margin-bottom: 0.125rem;
+        }
+
+        .advisor-info p {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .advisor-status {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: var(--success);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+        }
+
+        /* ========== MODALS ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            animation: modalSlide 0.3s ease;
+        }
+
+        .modal-wide {
+            max-width: 900px;
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: var(--gray-400);
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--gray-600);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        /* Look Detail Modal */
+        .look-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .look-detail-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .look-detail-date {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        .look-detail-section {
+            background: var(--gray-50);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .look-detail-section h4 {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .look-detail-text {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--gray-700);
+            background: var(--white);
+            padding: 0.875rem;
+            border-radius: 4px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .look-detail-text.empty {
+            color: var(--gray-400);
+            font-style: italic;
+        }
+
+        .stylist-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.625rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            margin-left: 0.5rem;
+        }
+
+        .look-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .look-detail-flatlay {
+            aspect-ratio: 4/3;
+            background: var(--white);
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.375rem;
+            padding: 0.5rem;
+        }
+
+        .look-detail-flatlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 3px;
+        }
+
+        .look-detail-ai {
+            aspect-ratio: 3/4;
+            background: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .look-detail-ai img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .look-detail-ai-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .look-items-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .look-items-grid .summary-item {
+            background: var(--white);
+            padding: 0.625rem;
+            border-radius: 4px;
+        }
+
+        /* Upload Zone */
+        .upload-zone {
+            border: 2px dashed var(--gray-300);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            background: var(--gray-50);
+        }
+
+        .upload-zone:hover {
+            border-color: var(--gray-400);
+        }
+
+        .upload-zone p {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        .url-divider {
+            text-align: center;
+            margin: 1rem 0;
+            color: var(--gray-400);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 0.875rem 1.5rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border-radius: 6px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 3000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Generation Overlay */
+        .generation-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(255,255,255,0.2);
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .account-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .look-detail-grid,
+            .flatlay-container,
+            .tryon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Proper Cloth Personal Styling Demo</h1>
-    <p>Demo placeholder - full content will be added.</p>
-</body>
-</html>
+    <!-- Header - Matching Proper Cloth -->
+    <header>
+        <div class="header-left">
+            <a href="https://propercloth.com/" class="header-link">Shop</a>
+            <a href="file:///Users/chriscallis/Library/Application%20Support/Claude/local-agent-mode-sessions/59178ee0-bd70-4316-add8-d59084d159ed/8ab07add-59e3-4d45-b635-935704b4f9a7/local_c49f7b28-f6c0-4a48-a169-b846a76963df/outputs/proper-cloth-stylist.html#" class="header-link">Features</a>
+        </div>
+        <a href="https://propercloth.com/" class="logo">
+            <span class="logo-text">Proper Cloth</span>
+        </a>
+        <div class="header-right">
+            <div class="header-icon" title="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="M21 21l-4.35-4.35"></path>
+                </svg>
+            </div>
+            <div class="header-user">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Chris C.</span>
+            </div>
+            <div class="header-icon" title="Favorites">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </div>
+            <div class="header-icon" title="Cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Account Layout -->
+    <div class="account-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-title">Account</div>
+            <ul class="sidebar-nav">
+                <li><a href="https://propercloth.com/account/basics" class="sidebar-link">Account Details</a></li>
+                <li><a href="https://propercloth.com/account/orders" class="sidebar-link">Order History</a></li>
+                <li><a href="file:///Users/chriscallis/Library/Application%20Support/Claude/local-agent-mode-sessions/59178ee0-bd70-4316-add8-d59084d159ed/8ab07add-59e3-4d45-b635-935704b4f9a7/local_c49f7b28-f6c0-4a48-a169-b846a76963df/outputs/proper-cloth-stylist.html#" class="sidebar-link styling-link active">Personal Styling</a></li>
+                <li><a href="https://propercloth.com/account/sizes" class="sidebar-link">Saved Sizes</a></li>
+                <li><a href="https://propercloth.com/account/style-profiles" class="sidebar-link">Style Profiles</a></li>
+                <li><a href="https://propercloth.com/account/fit-advice-requests" class="sidebar-link">Fit Advice Requests</a></li>
+                <li><a href="https://propercloth.com/account/returns" class="sidebar-link">Returns</a></li>
+                <li><a href="https://propercloth.com/account/addresses" class="sidebar-link">Addresses</a></li>
+                <li><a href="https://propercloth.com/account/payments" class="sidebar-link">Payment Methods</a></li>
+                <li><a href="https://propercloth.com/account/feedback" class="sidebar-link">Product Feedback</a></li>
+                <li><a href="https://propercloth.com/account/credits" class="sidebar-link">Store Credit</a></li>
+                <li><a href="https://propercloth.com/account/notifications" class="sidebar-link">Email &amp; SMS Preferences</a></li>
+            </ul>
+            <div class="sidebar-divider"></div>
+            <ul class="sidebar-nav">
+                <li><a href="https://propercloth.com/account/favorites" class="sidebar-link">Favorites</a></li>
+                <li><a href="https://propercloth.com/account/rewards" class="sidebar-link">Reward Points</a></li>
+                <li><a href="https://propercloth.com/account/referral" class="sidebar-link">Invite a Friend, Get $20</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="page-title">Personal Styling</h1>
+
+            <!-- Sub-navigation tabs -->
+            <div class="styling-tabs">
+                <button class="styling-tab active" data-page="closet">My Closet</button>
+                <button class="styling-tab" data-page="looks">Looks</button>
+                <button class="styling-tab" data-page="request">Request Look</button>
+            </div>
+
+            <!-- My Closet Page -->
+            <div class="page active" id="closet">
+                <div class="closet-header">
+                    <div class="closet-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="shirts">Shirts</button>
+                        <button class="filter-btn" data-filter="jackets">Jackets</button>
+                        <button class="filter-btn" data-filter="trousers">Trousers</button>
+                        <button class="filter-btn" data-filter="knitwear">Knitwear</button>
+                    </div>
+                    <button class="add-btn" onclick="openModal(&#39;addModal&#39;)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Add Item
+                    </button>
+                </div>
+
+                <div class="closet-grid" id="closetGrid">
+                <div class="closet-item" onclick="openItemModal(1)">
+                    <div class="item-image">
+                        <img src="./Personal Styling - Proper Cloth_files/9b47e75c83f51502ae90f4be549e7847_size2.jpg" alt="Stanton 120s Light Blue Bengal Stripe">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">shirts</div>
+                        <div class="item-name">Stanton 120s Light Blue Bengal Stripe</div>
+                        <div class="item-fit">Slim fit, pointed collar</div>
+                    </div>
+                </div>
+            
+                <div class="closet-item" onclick="openItemModal(2)">
+                    <div class="item-image">
+                        <img src="./Personal Styling - Proper Cloth_files/bc0316910ae441dd1f3dac6e5e6e0ee2_size2.jpg" alt="Loro Piana Navy S150s Hopsack Hudson Jacket">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">jackets</div>
+                        <div class="item-name">Loro Piana Navy S150s Hopsack Hudson Jacket</div>
+                        <div class="item-fit">Contemporary fit, soft shoulder</div>
+                    </div>
+                </div>
+            
+                <div class="closet-item" onclick="openItemModal(3)">
+                    <div class="item-image">
+                        <img src="./Personal Styling - Proper Cloth_files/1047c3bb7879774d07bd723bac67109c_size2.jpg" alt="Grey Non-Iron Stretch Chino">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">trousers</div>
+                        <div class="item-name">Grey Non-Iron Stretch Chino</div>
+                        <div class="item-fit">Tailored fit, mid-rise</div>
+                    </div>
+                </div>
+            
+                <div class="closet-item" onclick="openItemModal(4)">
+                    <div class="item-image">
+                        <img src="./Personal Styling - Proper Cloth_files/2137d2e50cae8e30dea46b70add82c15_size2.jpg" alt="Grey Cashmere Full Zip">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">knitwear</div>
+                        <div class="item-name">Grey Cashmere Full Zip</div>
+                        <div class="item-fit">Regular fit, full zip</div>
+                    </div>
+                </div>
+            
+                <div class="closet-item" onclick="openItemModal(5)">
+                    <div class="item-image">
+                        <img src="./Personal Styling - Proper Cloth_files/bf39f9c930cef51f7af7594218bc4b9f_size2.jpg" alt="Weston 80s Slate Pinpoint">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">shirts</div>
+                        <div class="item-name">Weston 80s Slate Pinpoint</div>
+                        <div class="item-fit">Classic fit, spread collar</div>
+                    </div>
+                </div>
+            
+                <div class="closet-item" onclick="openItemModal(6)">
+                    <div class="item-image">
+                        <img src="./Personal Styling - Proper Cloth_files/b5f89e754795179fc6b42522dac8a4d7_size2.jpg" alt="Japanese 12oz Mid Wash Indigo Stretch Jeans">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">trousers</div>
+                        <div class="item-name">Japanese 12oz Mid Wash Indigo Stretch Jeans</div>
+                        <div class="item-fit">Slim fit, mid-rise</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Looks Page -->
+            <div class="page" id="looks">
+                <!-- Library View -->
+                <div id="looksLibrary">
+                    <div class="looks-header">
+                        <div class="looks-filters">
+                            <button class="filter-btn active" data-look-filter="all">All Looks</button>
+                            <button class="filter-btn" data-look-filter="with-ai">With AI Image</button>
+                        </div>
+                        <button class="add-btn" onclick="startCreateLook()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M5 12h14"></path>
+                            </svg>
+                            Create New Look
+                        </button>
+                    </div>
+
+                    <div class="saved-looks-grid" id="savedLooksGrid">
+                    <div class="look-card" onclick="openLookDetail(1)">
+                        <div class="look-preview">
+                            <img src="./Personal Styling - Proper Cloth_files/9b47e75c83f51502ae90f4be549e7847_size2.jpg" alt="Stanton 120s Light Blue Bengal Stripe"><img src="./Personal Styling - Proper Cloth_files/bc0316910ae441dd1f3dac6e5e6e0ee2_size2.jpg" alt="Loro Piana Navy S150s Hopsack Hudson Jacket"><img src="./Personal Styling - Proper Cloth_files/1047c3bb7879774d07bd723bac67109c_size2.jpg" alt="Grey Non-Iron Stretch Chino">
+                            
+                        </div>
+                        <div class="look-info">
+                            <div class="look-name">Business Casual Friday</div>
+                            <div class="look-meta">
+                                <span>3 items</span>
+                                <span class="look-badge ai">✨ AI Image</span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="look-card" onclick="openLookDetail(2)">
+                        <div class="look-preview">
+                            <img src="./Personal Styling - Proper Cloth_files/9b47e75c83f51502ae90f4be549e7847_size2.jpg" alt="Stanton 120s Light Blue Bengal Stripe"><img src="./Personal Styling - Proper Cloth_files/2137d2e50cae8e30dea46b70add82c15_size2.jpg" alt="Grey Cashmere Full Zip"><img src="./Personal Styling - Proper Cloth_files/b5f89e754795179fc6b42522dac8a4d7_size2.jpg" alt="Japanese 12oz Mid Wash Indigo Stretch Jeans">
+                            
+                        </div>
+                        <div class="look-info">
+                            <div class="look-name">Summer Wedding Guest</div>
+                            <div class="look-meta">
+                                <span>3 items</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="look-card" onclick="openLookDetail(3)">
+                        <div class="look-preview">
+                            <img src="./Personal Styling - Proper Cloth_files/bf39f9c930cef51f7af7594218bc4b9f_size2.jpg" alt="Weston 80s Slate Pinpoint"><img src="./Personal Styling - Proper Cloth_files/2137d2e50cae8e30dea46b70add82c15_size2.jpg" alt="Grey Cashmere Full Zip"><img src="./Personal Styling - Proper Cloth_files/b5f89e754795179fc6b42522dac8a4d7_size2.jpg" alt="Japanese 12oz Mid Wash Indigo Stretch Jeans">
+                            
+                        </div>
+                        <div class="look-info">
+                            <div class="look-name">Weekend Brunch</div>
+                            <div class="look-meta">
+                                <span>3 items</span>
+                                <span class="look-badge ai">✨ AI Image</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Look Creator -->
+                <div class="look-creator" id="lookCreator">
+                    <div class="creator-steps">
+                        <div class="creator-step active" data-step="1">
+                            <span class="creator-step-num">1</span>
+                            Name &amp; Select Items
+                        </div>
+                        <div class="creator-step" data-step="2">
+                            <span class="creator-step-num">2</span>
+                            Review Flat Lay
+                        </div>
+                        <div class="creator-step" data-step="3">
+                            <span class="creator-step-num">3</span>
+                            AI Try-On (Optional)
+                        </div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div class="creator-content active" id="creatorStep1">
+                        <div class="form-group">
+                            <label class="form-label">Look Name</label>
+                            <input type="text" class="form-input" id="lookNameInput" placeholder="e.g., Business Casual Friday">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Request Details (Optional)</label>
+                            <textarea class="form-textarea" id="lookRequestInput" placeholder="Describe the occasion, dress code, or any preferences..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Select Items from Your Closet</label>
+                            <div class="item-selector-grid" id="itemSelectorGrid">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="creator-nav">
+                            <button class="btn-secondary" onclick="cancelCreateLook()">Cancel</button>
+                            <button class="btn-primary" onclick="goToStep(2)">Continue to Flat Lay</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="creator-content" id="creatorStep2">
+                        <div class="flatlay-container">
+                            <div class="flatlay-canvas" id="creatorFlatlay">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="selected-summary">
+                                <h4>Selected Items</h4>
+                                <div class="summary-list" id="creatorSelectedList">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="creator-nav">
+                            <button class="btn-secondary" onclick="goToStep(1)">Back</button>
+                            <div style="display: flex; gap: 0.75rem;">
+                                <button class="btn-secondary" onclick="saveLook(false)">Save Without AI</button>
+                                <button class="btn-primary" onclick="goToStep(3)">Generate AI Try-On</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="creator-content" id="creatorStep3">
+                        <div class="tryon-grid">
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1rem;">Your Photos</h3>
+                                <p style="color: var(--gray-500); font-size: 0.8125rem; margin-bottom: 1rem;">Upload 2-3 photos for the best AI representation</p>
+
+                                <div class="photo-grid">
+                                    <div class="photo-slot filled">
+                                        <img src="./Personal Styling - Proper Cloth_files/photo-1507003211169-0a1dd7228f2d" alt="User photo">
+                                    </div>
+                                    <div class="photo-slot filled">
+                                        <img src="./Personal Styling - Proper Cloth_files/photo-1506794778202-cad84cf45f1d" alt="User photo">
+                                    </div>
+                                    <div class="photo-slot">
+                                        <span style="font-size: 1.25rem; color: var(--gray-400);">+</span>
+                                    </div>
+                                </div>
+
+                                <button class="btn-primary" onclick="generateCreatorTryOn()" style="width: 100%;">Generate AI Image</button>
+                            </div>
+
+                            <div class="tryon-result" id="creatorTryonResult">
+                                <div class="tryon-placeholder">
+                                    <h4>Your AI Visualization</h4>
+                                    <p>Click "Generate AI Image" to see yourself in this look</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="creator-nav">
+                            <button class="btn-secondary" onclick="goToStep(2)">Back</button>
+                            <button class="btn-primary" onclick="saveLook(true)">Save Look</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Request Look Page -->
+            <div class="page" id="request">
+                <div class="request-form">
+                    <div class="advisor-card">
+                        <div class="advisor-avatar">AC</div>
+                        <div class="advisor-info">
+                            <h4>Alexandra Chen</h4>
+                            <p>Your Assigned Style Advisor</p>
+                        </div>
+                        <div class="advisor-status">
+                            <span class="status-dot"></span>
+                            Available
+                        </div>
+                    </div>
+
+                    <form id="requestForm">
+                        <div class="form-group">
+                            <label class="form-label">Occasion / Event</label>
+                            <input type="text" class="form-input" placeholder="e.g., Business dinner, Wedding guest">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Date &amp; Time</label>
+                            <input type="datetime-local" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Dress Code (if specified)</label>
+                            <select class="form-select">
+                                <option value="">Select dress code...</option>
+                                <option>Black Tie</option>
+                                <option>Formal</option>
+                                <option>Business Professional</option>
+                                <option>Business Casual</option>
+                                <option>Smart Casual</option>
+                                <option>Casual</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Additional Notes</label>
+                            <textarea class="form-textarea" placeholder="Any preferences or specific pieces you&#39;d like to incorporate..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%;" onclick="submitRequest(event)">Send Request to Advisor</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal-overlay" id="addModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add to Closet</h3>
+                <button class="modal-close" onclick="closeModal(&#39;addModal&#39;)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Upload Image</label>
+                    <div class="upload-zone">
+                        <p>📷 Click to upload or drag and drop</p>
+                        <p style="font-size: 0.6875rem; margin-top: 0.5rem; color: var(--gray-400);">PNG, JPG up to 10MB</p>
+                    </div>
+                    <div class="url-divider">— or —</div>
+                    <input type="url" class="form-input" placeholder="Paste image URL">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-select">
+                        <option value="">Select category...</option>
+                        <option>Shirts</option>
+                        <option>Jackets &amp; Blazers</option>
+                        <option>Trousers</option>
+                        <option>Knitwear</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" class="form-input" placeholder="e.g., Navy Hopsack Hudson Jacket">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Fit Description</label>
+                    <textarea class="form-textarea" placeholder="Describe the fit: slim, relaxed, tailored..."></textarea>
+                </div>
+
+                <button class="btn-primary" style="width: 100%;" onclick="addItem()">Add to Closet</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Item Detail Modal -->
+    <div class="modal-overlay" id="itemModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Item Details</h3>
+                <button class="modal-close" onclick="closeModal(&#39;itemModal&#39;)">×</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div id="modalItemImage" style="aspect-ratio: 4/5; background: var(--gray-50); border-radius: 6px; overflow: hidden;">
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 1rem;">
+                            <div class="form-label">Category</div>
+                            <div id="modalItemCategory" style="font-size: 0.875rem;">Shirts</div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div class="form-label">Item Name</div>
+                            <div id="modalItemName" style="font-size: 0.875rem; font-weight: 500;"></div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div class="form-label">Fit</div>
+                            <div id="modalItemFit" style="font-size: 0.875rem;"></div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div class="form-label">Details</div>
+                            <div id="modalItemDetails" style="font-size: 0.875rem; line-height: 1.6;"></div>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem;">
+                            <button class="btn-secondary" style="flex: 1;">Edit Item</button>
+                            <button class="btn-primary" style="flex: 1;">Add to Look</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Look Detail Modal -->
+    <div class="modal-overlay" id="lookDetailModal">
+        <div class="modal modal-wide">
+            <div class="modal-header">
+                <h3>Look Details</h3>
+                <button class="modal-close" onclick="closeModal(&#39;lookDetailModal&#39;)">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="look-detail-header">
+                    <div>
+                        <div class="look-detail-title" id="lookDetailTitle">Business Casual Friday</div>
+                        <div class="look-detail-date" id="lookDetailDate">Created January 15, 2026</div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn-secondary" style="padding: 0.5rem 0.875rem;">Share</button>
+                        <button class="btn-secondary" style="padding: 0.5rem 0.875rem; color: #dc2626;">Delete</button>
+                    </div>
+                </div>
+
+                <!-- Request Text -->
+                <div class="look-detail-section">
+                    <h4>Original Request</h4>
+                    <div class="look-detail-text" id="lookDetailRequest"></div>
+                </div>
+
+                <!-- Stylist Notes -->
+                <div class="look-detail-section">
+                    <h4>Stylist Notes <span class="stylist-badge">From Your Advisor</span></h4>
+                    <div id="lookDetailNotesContainer"></div>
+                </div>
+
+                <div class="look-detail-grid">
+                    <div class="look-detail-section">
+                        <h4>Flat Lay</h4>
+                        <div class="look-detail-flatlay" id="lookDetailFlatlay"></div>
+                    </div>
+
+                    <div class="look-detail-section">
+                        <h4>AI Try-On</h4>
+                        <div class="look-detail-ai" id="lookDetailAI"></div>
+                    </div>
+                </div>
+
+                <div class="look-detail-section">
+                    <h4>Items in This Look</h4>
+                    <div class="look-items-grid" id="lookDetailItems"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Request sent to Alexandra Chen</div>
+
+    <script>
+        // Closet Items Data
+        const closetItems = [
+            {
+                id: 1,
+                category: 'shirts',
+                name: 'Stanton 120s Light Blue Bengal Stripe',
+                fit: 'Slim fit, pointed collar',
+                details: '120s two-ply cotton. Light blue bengal stripe pattern.',
+                image: 'https://cdn2.propercloth.com/pic_cs/9b47e75c83f51502ae90f4be549e7847_size2.jpg'
+            },
+            {
+                id: 2,
+                category: 'jackets',
+                name: 'Loro Piana Navy S150s Hopsack Hudson Jacket',
+                fit: 'Contemporary fit, soft shoulder',
+                details: 'Loro Piana S150s wool hopsack. Navy blue with natural texture.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/bc0316910ae441dd1f3dac6e5e6e0ee2_size2.jpg'
+            },
+            {
+                id: 3,
+                category: 'trousers',
+                name: 'Grey Non-Iron Stretch Chino',
+                fit: 'Tailored fit, mid-rise',
+                details: 'Non-iron stretch cotton twill. Grey with slight sheen.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/1047c3bb7879774d07bd723bac67109c_size2.jpg'
+            },
+            {
+                id: 4,
+                category: 'knitwear',
+                name: 'Grey Cashmere Full Zip',
+                fit: 'Regular fit, full zip',
+                details: '100% cashmere. Heather grey.',
+                image: 'https://cdn2.propercloth.com/pic_sp/2137d2e50cae8e30dea46b70add82c15_size2.jpg'
+            },
+            {
+                id: 5,
+                category: 'shirts',
+                name: 'Weston 80s Slate Pinpoint',
+                fit: 'Classic fit, spread collar',
+                details: '80s two-ply pinpoint oxford. Slate grey solid.',
+                image: 'https://cdn2.propercloth.com/pic_cs/bf39f9c930cef51f7af7594218bc4b9f_size2.jpg'
+            },
+            {
+                id: 6,
+                category: 'trousers',
+                name: 'Japanese 12oz Mid Wash Indigo Stretch Jeans',
+                fit: 'Slim fit, mid-rise',
+                details: 'Japanese 12oz stretch denim. Mid wash indigo.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/b5f89e754795179fc6b42522dac8a4d7_size2.jpg'
+            }
+        ];
+
+        // Saved Looks Data
+        let savedLooks = [
+            {
+                id: 1,
+                name: 'Business Casual Friday',
+                createdAt: '2026-01-15',
+                items: [1, 2, 3],
+                hasAI: true,
+                aiImage: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&h=800&fit=crop',
+                requestText: 'I need a business casual look for a Friday team meeting. The office is smart casual but we have clients visiting so I want to look polished without being too formal.',
+                stylistNotes: 'Great pairing! The Bengal stripe shirt adds visual interest while staying professional. Consider rolling the jacket sleeves slightly for that effortless Friday vibe.'
+            },
+            {
+                id: 2,
+                name: 'Summer Wedding Guest',
+                createdAt: '2026-01-10',
+                items: [1, 4, 6],
+                hasAI: false,
+                aiImage: null,
+                requestText: 'Attending an outdoor summer wedding in Napa. Dress code says "garden party attire".',
+                stylistNotes: ''
+            },
+            {
+                id: 3,
+                name: 'Weekend Brunch',
+                createdAt: '2026-01-08',
+                items: [5, 4, 6],
+                hasAI: true,
+                aiImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
+                requestText: 'Casual brunch with friends downtown. Want to look put together but relaxed.',
+                stylistNotes: 'Love this combination - the cashmere zip adds luxury to casual jeans. Perfect for an upscale brunch spot.'
+            }
+        ];
+
+        // Creator State
+        let creatorState = {
+            selectedItems: [],
+            lookName: '',
+            requestText: '',
+            aiImage: null
+        };
+
+        // Tab Navigation
+        document.querySelectorAll('.styling-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.styling-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.page).classList.add('active');
+
+                if (tab.dataset.page === 'looks') {
+                    cancelCreateLook();
+                }
+            });
+        });
+
+        // Filter Buttons
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderCloset(btn.dataset.filter);
+            });
+        });
+
+        document.querySelectorAll('.filter-btn[data-look-filter]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn[data-look-filter]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderSavedLooks(btn.dataset.lookFilter);
+            });
+        });
+
+        // Render Closet
+        function renderCloset(filter = 'all') {
+            const grid = document.getElementById('closetGrid');
+            const items = filter === 'all' ? closetItems : closetItems.filter(i => i.category === filter);
+
+            grid.innerHTML = items.map(item => `
+                <div class="closet-item" onclick="openItemModal(${item.id})">
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">${item.category}</div>
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-fit">${item.fit}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Saved Looks
+        function renderSavedLooks(filter = 'all') {
+            const grid = document.getElementById('savedLooksGrid');
+            let looks = filter === 'with-ai' ? savedLooks.filter(l => l.hasAI) : savedLooks;
+
+            if (looks.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray-500);">
+                        <p style="font-size: 2rem; margin-bottom: 0.5rem;">👔</p>
+                        <p>No looks yet. Create your first look to get started.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = looks.map(look => {
+                const lookItems = look.items.map(id => closetItems.find(i => i.id === id)).filter(Boolean);
+                const previewImages = lookItems.slice(0, 3);
+                const emptySlots = 3 - previewImages.length;
+
+                return `
+                    <div class="look-card" onclick="openLookDetail(${look.id})">
+                        <div class="look-preview">
+                            ${previewImages.map(item => `<img src="${item.image}" alt="${item.name}">`).join('')}
+                            ${Array(emptySlots).fill('<div class="empty-slot"></div>').join('')}
+                        </div>
+                        <div class="look-info">
+                            <div class="look-name">${look.name}</div>
+                            <div class="look-meta">
+                                <span>${lookItems.length} items</span>
+                                ${look.hasAI ? '<span class="look-badge ai">✨ AI Image</span>' : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Modal Functions
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function openItemModal(id) {
+            const item = closetItems.find(i => i.id === id);
+            if (item) {
+                document.getElementById('modalItemImage').innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                document.getElementById('modalItemCategory').textContent = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+                document.getElementById('modalItemName').textContent = item.name;
+                document.getElementById('modalItemFit').textContent = item.fit;
+                document.getElementById('modalItemDetails').textContent = item.details;
+                openModal('itemModal');
+            }
+        }
+
+        function openLookDetail(lookId) {
+            const look = savedLooks.find(l => l.id === lookId);
+            if (!look) return;
+
+            const lookItems = look.items.map(id => closetItems.find(i => i.id === id)).filter(Boolean);
+
+            document.getElementById('lookDetailTitle').textContent = look.name;
+            document.getElementById('lookDetailDate').textContent = `Created ${formatDate(look.createdAt)}`;
+
+            // Request text
+            const requestEl = document.getElementById('lookDetailRequest');
+            if (look.requestText && look.requestText.trim()) {
+                requestEl.textContent = look.requestText;
+                requestEl.classList.remove('empty');
+            } else {
+                requestEl.textContent = 'No request details provided';
+                requestEl.classList.add('empty');
+            }
+
+            // Stylist notes
+            const notesContainer = document.getElementById('lookDetailNotesContainer');
+            if (look.stylistNotes && look.stylistNotes.trim()) {
+                notesContainer.innerHTML = `<div class="look-detail-text">${look.stylistNotes}</div>`;
+            } else {
+                notesContainer.innerHTML = `<div class="look-detail-text empty">Awaiting notes from your stylist...</div>`;
+            }
+
+            // Flat lay
+            const flatlay = document.getElementById('lookDetailFlatlay');
+            const emptySlots = Math.max(0, 6 - lookItems.length);
+            flatlay.innerHTML = lookItems.map(item => `
+                <img src="${item.image}" alt="${item.name}">
+            `).join('') + Array(emptySlots).fill('<div style="background: var(--gray-100); border-radius: 3px;"></div>').join('');
+
+            // AI image
+            const aiSection = document.getElementById('lookDetailAI');
+            if (look.hasAI && look.aiImage) {
+                aiSection.innerHTML = `<img src="${look.aiImage}" alt="AI Generated">`;
+            } else {
+                aiSection.innerHTML = `
+                    <div class="look-detail-ai-placeholder">
+                        <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤖</p>
+                        <p>No AI image generated</p>
+                        <button class="btn-primary" style="margin-top: 0.75rem; padding: 0.5rem 1rem;" onclick="generateAIForLook(${look.id})">Generate Now</button>
+                    </div>
+                `;
+            }
+
+            // Items list
+            const itemsList = document.getElementById('lookDetailItems');
+            itemsList.innerHTML = lookItems.map(item => `
+                <div class="summary-item">
+                    <div class="summary-thumb">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="summary-name">${item.name}</div>
+                </div>
+            `).join('');
+
+            openModal('lookDetailModal');
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        function generateAIForLook(lookId) {
+            showToast('Generating AI image...');
+            setTimeout(() => {
+                const look = savedLooks.find(l => l.id === lookId);
+                if (look) {
+                    look.hasAI = true;
+                    look.aiImage = 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&h=800&fit=crop';
+                    openLookDetail(lookId);
+                    renderSavedLooks();
+                    showToast('AI image generated!');
+                }
+            }, 2000);
+        }
+
+        // Look Creator
+        function startCreateLook() {
+            creatorState = { selectedItems: [], lookName: '', requestText: '', aiImage: null };
+            document.getElementById('looksLibrary').style.display = 'none';
+            document.getElementById('lookCreator').classList.add('active');
+            goToStep(1);
+            renderItemSelector();
+            document.getElementById('lookNameInput').value = '';
+            document.getElementById('lookRequestInput').value = '';
+        }
+
+        function cancelCreateLook() {
+            document.getElementById('lookCreator').classList.remove('active');
+            document.getElementById('looksLibrary').style.display = 'block';
+            creatorState = { selectedItems: [], lookName: '', requestText: '', aiImage: null };
+        }
+
+        function renderItemSelector() {
+            const grid = document.getElementById('itemSelectorGrid');
+            grid.innerHTML = closetItems.map(item => `
+                <div class="selectable-item ${creatorState.selectedItems.includes(item.id) ? 'selected' : ''}"
+                     onclick="toggleItemSelection(${item.id})">
+                    <div class="item-check">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-category">${item.category}</div>
+                        <div class="item-name">${item.name}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleItemSelection(itemId) {
+            const index = creatorState.selectedItems.indexOf(itemId);
+            if (index === -1) {
+                creatorState.selectedItems.push(itemId);
+            } else {
+                creatorState.selectedItems.splice(index, 1);
+            }
+            renderItemSelector();
+        }
+
+        function goToStep(step) {
+            document.querySelectorAll('.creator-step').forEach(s => {
+                const stepNum = parseInt(s.dataset.step);
+                s.classList.remove('active', 'completed');
+                if (stepNum < step) s.classList.add('completed');
+                else if (stepNum === step) s.classList.add('active');
+            });
+
+            document.querySelectorAll('.creator-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`creatorStep${step}`).classList.add('active');
+
+            if (step === 2) {
+                creatorState.lookName = document.getElementById('lookNameInput').value.trim();
+                creatorState.requestText = document.getElementById('lookRequestInput').value.trim();
+                if (!creatorState.lookName) {
+                    showToast('Please enter a look name');
+                    goToStep(1);
+                    return;
+                }
+                if (creatorState.selectedItems.length === 0) {
+                    showToast('Please select at least one item');
+                    goToStep(1);
+                    return;
+                }
+                renderCreatorFlatlay();
+            }
+
+            if (step === 3) {
+                document.getElementById('creatorTryonResult').innerHTML = `
+                    <div class="tryon-placeholder">
+                        <h4>Your AI Visualization</h4>
+                        <p>Click "Generate AI Image" to see yourself in this look</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderCreatorFlatlay() {
+            const canvas = document.getElementById('creatorFlatlay');
+            const selectedList = document.getElementById('creatorSelectedList');
+            const selectedItems = creatorState.selectedItems.map(id => closetItems.find(i => i.id === id)).filter(Boolean);
+
+            const emptySlots = Math.max(0, 6 - selectedItems.length);
+            canvas.innerHTML = selectedItems.map(item => `
+                <div class="flatlay-slot">
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+            `).join('') + Array(emptySlots).fill('<div class="flatlay-slot empty"></div>').join('');
+
+            selectedList.innerHTML = selectedItems.map(item => `
+                <div class="summary-item">
+                    <div class="summary-thumb">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="summary-name">${item.name}</div>
+                </div>
+            `).join('');
+        }
+
+        function generateCreatorTryOn() {
+            const result = document.getElementById('creatorTryonResult');
+            result.innerHTML = `
+                <div class="generation-overlay">
+                    <div class="spinner"></div>
+                    <p style="font-size: 0.8125rem;">Generating your visualization...</p>
+                </div>
+            `;
+
+            setTimeout(() => {
+                creatorState.aiImage = 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&h=800&fit=crop';
+                result.innerHTML = `<img src="${creatorState.aiImage}" alt="AI Generated" style="width: 100%; height: 100%; object-fit: cover;">`;
+                showToast('AI visualization complete!');
+            }, 3000);
+        }
+
+        function saveLook(withAI) {
+            if (withAI && !creatorState.aiImage) {
+                showToast('Please generate an AI image first');
+                return;
+            }
+
+            const newLook = {
+                id: Date.now(),
+                name: creatorState.lookName,
+                createdAt: new Date().toISOString().split('T')[0],
+                items: [...creatorState.selectedItems],
+                hasAI: withAI && !!creatorState.aiImage,
+                aiImage: withAI ? creatorState.aiImage : null,
+                requestText: creatorState.requestText || '',
+                stylistNotes: ''
+            };
+
+            savedLooks.unshift(newLook);
+            cancelCreateLook();
+            renderSavedLooks();
+            showToast(`"${newLook.name}" saved!`);
+        }
+
+        function addItem() {
+            closeModal('addModal');
+            showToast('Item added to closet');
+        }
+
+        function submitRequest(e) {
+            e.preventDefault();
+            showToast('Request sent to Alexandra Chen');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
+        // Initialize
+        renderCloset();
+        renderSavedLooks();
+    </script>
+
+
+</body></html>
