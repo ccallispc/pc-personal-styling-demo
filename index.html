@@ -1562,11 +1562,28 @@
                             <button class="filter-btn" data-filter="shoes">Shoes</button>
                         </div>
                         <div class="closet-sort">
+                            <label for="closetColorFilter">Color:</label>
+                            <select id="closetColorFilter">
+                                <option value="all">All Colors</option>
+                                <option value="white">White</option>
+                                <option value="blue">Blue</option>
+                                <option value="navy">Navy</option>
+                                <option value="grey">Grey</option>
+                                <option value="black">Black</option>
+                                <option value="brown">Brown</option>
+                                <option value="green">Green</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="red">Red</option>
+                            </select>
+                        </div>
+                        <div class="closet-sort">
                             <label for="closetSortSelect">Sort by:</label>
                             <select id="closetSortSelect">
                                 <option value="newest">Newest to Oldest</option>
                                 <option value="oldest">Oldest to Newest</option>
-                                <option value="color">Color</option>
                             </select>
                         </div>
                     </div>
@@ -1792,11 +1809,12 @@
                     <label class="form-label">Category</label>
                     <select class="form-select">
                         <option value="">Select category...</option>
-                        <option>Shirts</option>
-                        <option>Jackets & Blazers</option>
-                        <option>Trousers</option>
-                        <option>Knitwear</option>
-                        <option>Accessories</option>
+                        <option value="shirts">Shirts</option>
+                        <option value="jackets">Jackets (Sport Coats & Outerwear)</option>
+                        <option value="pants">Pants</option>
+                        <option value="knitwear">Knitwear</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="shoes">Shoes</option>
                     </select>
                 </div>
 
@@ -1839,9 +1857,13 @@
                             <div class="form-label">Fit</div>
                             <div id="modalItemFit" style="font-size: 0.875rem;"></div>
                         </div>
-                        <div style="margin-bottom: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
                             <div class="form-label">Details</div>
                             <div id="modalItemDetails" style="font-size: 0.875rem; line-height: 1.6;"></div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div class="form-label">Color</div>
+                            <div id="modalItemColor" style="font-size: 0.875rem; text-transform: capitalize;"></div>
                         </div>
                         <a href="#" id="modalItemLink" target="_blank" class="modal-product-link">
                             View Product on Proper Cloth
@@ -1852,7 +1874,7 @@
                             </svg>
                         </a>
                         <div style="display: flex; gap: 0.75rem;">
-                            <button class="btn-secondary" style="flex: 1;">Edit Item</button>
+                            <button class="btn-secondary" style="flex: 1;" onclick="openEditItemModal()">Edit Item</button>
                             <button class="btn-primary" style="flex: 1;">Add to Look</button>
                         </div>
                     </div>
@@ -1918,6 +1940,64 @@
                 <div class="look-detail-section">
                     <h4>Items in This Look</h4>
                     <div class="look-items-grid" id="lookDetailItems"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Item Modal -->
+    <div class="modal-overlay" id="editItemModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Item</h3>
+                <button class="modal-close" onclick="closeModal('editItemModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" class="form-input" id="editItemName">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-input" id="editItemCategory">
+                        <option value="shirts">Shirts</option>
+                        <option value="jackets">Jackets</option>
+                        <option value="pants">Pants</option>
+                        <option value="knitwear">Knitwear</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="shoes">Shoes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Fit</label>
+                    <input type="text" class="form-input" id="editItemFit">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Details</label>
+                    <textarea class="form-input" id="editItemDetails" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Color</label>
+                    <select class="form-input" id="editItemColor">
+                        <option value="white">White</option>
+                        <option value="blue">Blue</option>
+                        <option value="navy">Navy</option>
+                        <option value="grey">Grey</option>
+                        <option value="black">Black</option>
+                        <option value="brown">Brown</option>
+                        <option value="green">Green</option>
+                        <option value="purple">Purple</option>
+                        <option value="pink">Pink</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="orange">Orange</option>
+                        <option value="red">Red</option>
+                        <option value="beige">Beige</option>
+                        <option value="cream">Cream</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button class="btn-secondary" style="flex: 1;" onclick="closeModal('editItemModal')">Cancel</button>
+                    <button class="btn-primary" style="flex: 1;" onclick="saveItemEdits()">Save Changes</button>
                 </div>
             </div>
         </div>
@@ -2015,6 +2095,216 @@
                 favorite: false,
                 dateAdded: '2026-01-05',
                 color: 'navy'
+            },
+            {
+                id: 7,
+                category: 'shirts',
+                name: 'Weston 80s Slate Pinpoint',
+                fit: 'Slim fit, point collar',
+                details: 'Fine pinpoint oxford. Slate blue.',
+                image: 'https://cdn2.propercloth.com/pic_cs/693198_df801fbd1efa17bd1ba08a9ff0925751_size6.jpg',
+                url: 'https://propercloth.com/dress-shirts/weston-80s-slate-pinpoint-693198.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-15',
+                color: 'blue'
+            },
+            {
+                id: 8,
+                category: 'shirts',
+                name: 'Portuguese Marigold Brushed Chambray',
+                fit: 'Relaxed fit, button-down collar',
+                details: 'Soft brushed chambray. Warm marigold.',
+                image: 'https://cdn2.propercloth.com/pic_cs/630293_74786aa8948e91b1caa187adec6a1d92_size6.jpg',
+                url: 'https://propercloth.com/casual-shirts/portuguese-marigold-brushed-chambray-630293.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-14',
+                color: 'yellow'
+            },
+            {
+                id: 9,
+                category: 'shirts',
+                name: 'White Performance Easy Care Knit Dress Shirt',
+                fit: 'Slim fit, spread collar',
+                details: 'Performance knit fabric. Easy care white.',
+                image: 'https://cdn2.propercloth.com/pic_cs/658470_34df937f61381d91c93a31dc771904cf_size6.jpg',
+                url: 'https://propercloth.com/dress-shirts/white-performance-easy-care-knit-658470.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-13',
+                color: 'white'
+            },
+            {
+                id: 10,
+                category: 'shirts',
+                name: 'Light Blue Performance Easy Care Knit Dress Shirt',
+                fit: 'Slim fit, spread collar',
+                details: 'Performance knit fabric. Light blue.',
+                image: 'https://cdn2.propercloth.com/pic_cs/658471_652cb18886cb41ea38f0f34e8c3caeb7_size6.jpg',
+                url: 'https://propercloth.com/dress-shirts/light-blue-performance-easy-care-knit-658471.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-13',
+                color: 'blue'
+            },
+            {
+                id: 11,
+                category: 'jackets',
+                name: 'Subalpino Navy Brushed Wool Workshirt',
+                fit: 'Relaxed fit, shirt jacket',
+                details: 'Heavy wool flannel. Deep navy.',
+                image: 'https://cdn2.propercloth.com/pic_cs/637293_77ca8da834b3adb75f8850fc39a5f878_size6.jpg',
+                url: 'https://propercloth.com/outerwear/subalpino-navy-brushed-wool-637293.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: true,
+                dateAdded: '2026-01-12',
+                color: 'navy'
+            },
+            {
+                id: 12,
+                category: 'jackets',
+                name: 'Subalpino Grey Melange Brushed Wool Workshirt',
+                fit: 'Relaxed fit, shirt jacket',
+                details: 'Heavy wool flannel. Grey melange.',
+                image: 'https://cdn2.propercloth.com/pic_cs/636517_26c6a1eb613e93d29670feccd4a028b1_size6.jpg',
+                url: 'https://propercloth.com/outerwear/subalpino-grey-melange-brushed-wool-636517.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-12',
+                color: 'grey'
+            },
+            {
+                id: 13,
+                category: 'jackets',
+                name: 'Loro Piana Grey Wool Cashmere Walker Jacket',
+                fit: 'Contemporary fit, unstructured',
+                details: 'Loro Piana wool cashmere. Soft grey.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/aece760f72dfea2efed118d9b07ce37a_size6.jpg',
+                url: 'https://propercloth.com/jackets/loro-piana-grey-wool-cashmere-walker.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: true,
+                dateAdded: '2026-01-11',
+                color: 'grey'
+            },
+            {
+                id: 14,
+                category: 'shirts',
+                name: 'Albiate Light Blue Indigo Dobby Utility Shirt',
+                fit: 'Relaxed fit, two pocket',
+                details: 'Light indigo dobby weave. Casual style.',
+                image: 'https://cdn2.propercloth.com/pic_cs/8c032f11c65b3b164f5a0d8caa793038_size6.jpg',
+                url: 'https://propercloth.com/casual-shirts/albiate-light-blue-indigo-dobby-utility.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-10',
+                color: 'blue'
+            },
+            {
+                id: 15,
+                category: 'shirts',
+                name: 'Sidogras Indigo Weft Denim Twill',
+                fit: 'Slim fit, spread collar',
+                details: 'Italian denim. Dark wash indigo.',
+                image: 'https://cdn2.propercloth.com/pic_cs/628338_3b393229f482c6acae69c9c49ac96718_size6.jpg',
+                url: 'https://propercloth.com/dress-shirts/sidogras-indigo-weft-denim-twill-628338.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-09',
+                color: 'navy'
+            },
+            {
+                id: 16,
+                category: 'shirts',
+                name: 'Extra Light Wash Denim Shirt',
+                fit: 'Slim fit, spread collar',
+                details: 'Italian denim. Extra light wash.',
+                image: 'https://cdn2.propercloth.com/pic_cs/bc49251ab56e0c42f48a2b8314849504_size6.jpg',
+                url: 'https://propercloth.com/dress-shirts/extra-light-wash-denim-shirt.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-09',
+                color: 'blue'
+            },
+            {
+                id: 17,
+                category: 'knitwear',
+                name: 'Grey Melange Plaid Viscose Blend Knit',
+                fit: 'Regular fit, button front',
+                details: 'Soft flannel knit. Grey plaid pattern.',
+                image: 'https://cdn2.propercloth.com/pic_cs/b086d09032cbfbdb83b042e0820afe06_size6.jpg',
+                url: 'https://propercloth.com/knitwear/grey-melange-plaid-viscose-blend-knit.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-08',
+                color: 'grey'
+            },
+            {
+                id: 18,
+                category: 'pants',
+                name: 'Grey Peached Wrinkle-Resistant Stretch Chino',
+                fit: 'Tailored fit, mid-rise',
+                details: 'Wrinkle-resistant peached cotton. Grey.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/313947_4567e2fe773e69cc913dddd0ffc34161_size6.jpg',
+                url: 'https://propercloth.com/pants/grey-peached-wrinkle-resistant-stretch-chino-313947.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-07',
+                color: 'grey'
+            },
+            {
+                id: 19,
+                category: 'pants',
+                name: 'Japanese 12oz Light Wash Indigo Stretch Jeans',
+                fit: 'Slim fit, mid-rise',
+                details: 'Japanese stretch denim. Light indigo wash.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/285118_7d51a2b13ae7f65fcd83e43c6a843d4e_size6.jpg',
+                url: 'https://propercloth.com/pants/japanese-12oz-light-wash-indigo-stretch-jeans-285118.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: true,
+                dateAdded: '2026-01-06',
+                color: 'blue'
+            },
+            {
+                id: 20,
+                category: 'shirts',
+                name: 'Irving Lavender Mini Gingham',
+                fit: 'Slim fit, semi-spread collar',
+                details: 'Fine broadcloth. Lavender mini gingham.',
+                image: 'https://cdn2.propercloth.com/pic_cs/59d1b52fc972ce2c394263e5b1c8feb2_size6.jpg',
+                url: 'https://propercloth.com/dress-shirts/irving-lavender-mini-gingham.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-05',
+                color: 'purple'
+            },
+            {
+                id: 21,
+                category: 'jackets',
+                name: 'Loro Piana Navy Glen Plaid Wool Cashmere Walker Jacket',
+                fit: 'Contemporary fit, unstructured',
+                details: 'Loro Piana wool cashmere. Navy glen plaid.',
+                image: 'https://cdn2.propercloth.com/pic_tccp/6939368742db4a304d52d02df24576fe_size6.jpg',
+                url: 'https://propercloth.com/jackets/loro-piana-navy-glen-plaid-wool-cashmere-walker.html',
+                lastWorn: null,
+                timesWorn: 0,
+                favorite: false,
+                dateAdded: '2026-01-04',
+                color: 'navy'
             }
         ];
 
@@ -2022,6 +2312,7 @@
         let closetFilter = 'all';
         let closetSearch = '';
         let closetSort = 'newest';
+        let closetColorFilter = 'all';
 
         // Saved Looks Data
         let savedLooks = [
@@ -2110,6 +2401,12 @@
             renderCloset();
         });
 
+        // Color filter dropdown for Closet
+        document.getElementById('closetColorFilter').addEventListener('change', (e) => {
+            closetColorFilter = e.target.value;
+            renderCloset();
+        });
+
         document.querySelectorAll('.filter-btn[data-look-filter]').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn[data-look-filter]').forEach(b => b.classList.remove('active'));
@@ -2190,17 +2487,17 @@
                 );
             }
 
+            // Filter by color
+            if (closetColorFilter !== 'all') {
+                items = items.filter(i => i.color === closetColorFilter);
+            }
+
             // Sort items
-            const colorOrder = ['white', 'cream', 'beige', 'yellow', 'orange', 'pink', 'red', 'burgundy', 'purple', 'blue', 'navy', 'teal', 'green', 'olive', 'brown', 'tan', 'grey', 'charcoal', 'black'];
             items = [...items].sort((a, b) => {
                 if (closetSort === 'newest') {
                     return new Date(b.dateAdded) - new Date(a.dateAdded);
                 } else if (closetSort === 'oldest') {
                     return new Date(a.dateAdded) - new Date(b.dateAdded);
-                } else if (closetSort === 'color') {
-                    const aIndex = colorOrder.indexOf(a.color) !== -1 ? colorOrder.indexOf(a.color) : 999;
-                    const bIndex = colorOrder.indexOf(b.color) !== -1 ? colorOrder.indexOf(b.color) : 999;
-                    return aIndex - bIndex;
                 }
                 return 0;
             });
@@ -2406,16 +2703,48 @@
             document.getElementById(id).classList.remove('active');
         }
 
+        let currentEditItemId = null;
+
         function openItemModal(id) {
             const item = closetItems.find(i => i.id === id);
             if (item) {
+                currentEditItemId = id;
                 document.getElementById('modalItemImage').innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
                 document.getElementById('modalItemCategory').textContent = item.category.charAt(0).toUpperCase() + item.category.slice(1);
                 document.getElementById('modalItemName').textContent = item.name;
                 document.getElementById('modalItemFit').textContent = item.fit;
                 document.getElementById('modalItemDetails').textContent = item.details;
+                document.getElementById('modalItemColor').textContent = item.color || 'Not set';
                 document.getElementById('modalItemLink').href = item.url;
                 openModal('itemModal');
+            }
+        }
+
+        function openEditItemModal() {
+            const item = closetItems.find(i => i.id === currentEditItemId);
+            if (item) {
+                document.getElementById('editItemName').value = item.name;
+                document.getElementById('editItemCategory').value = item.category;
+                document.getElementById('editItemFit').value = item.fit;
+                document.getElementById('editItemDetails').value = item.details;
+                document.getElementById('editItemColor').value = item.color || 'blue';
+                closeModal('itemModal');
+                openModal('editItemModal');
+            }
+        }
+
+        function saveItemEdits() {
+            const item = closetItems.find(i => i.id === currentEditItemId);
+            if (item) {
+                item.name = document.getElementById('editItemName').value;
+                item.category = document.getElementById('editItemCategory').value;
+                item.fit = document.getElementById('editItemFit').value;
+                item.details = document.getElementById('editItemDetails').value;
+                item.color = document.getElementById('editItemColor').value;
+
+                closeModal('editItemModal');
+                renderCloset();
+                showToast('Item updated successfully');
             }
         }
 
